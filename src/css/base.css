@@ -1,0 +1,299 @@
+@charset "UTF-8";
+/*css 初始化 */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset, img, input, button { 			/*fieldset组合表单中的相关元素*/
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline-style: none;
+}
+
+ul, ol {
+    list-style: none;				/*清除列表风格*/
+}
+
+input {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-family: "SimSun", "宋体";
+    border:none;
+}
+
+select, input {
+    vertical-align: middle;
+}
+
+select, input, textarea {
+    font-size: 12px;
+    margin: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+/*防止多行文本框拖动*/
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+/*  去掉图片低测默认的3像素空白缝隙*/
+table {
+    border-collapse: collapse;			/*合并外边线*/
+}
+
+
+body {
+    font: 12px/150% Arial, Verdana, "\5b8b\4f53";	/*宋体，Unicode，统一码*/
+    color: #666;
+    background: #f0f3ef;
+}
+ /* .clearfix:before, .clearfix:after {     content: "";     display: table }
+ .clearfix:after {     clear: both; }
+ .clearfix {     *zoom: 1; /*IE/7/6*/ 
+
+.clearfix:after {
+    content: '';
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    dispaly: block;
+    clear: both;
+    }
+    .clearfix {
+    zoom: 1;/*IE678*/
+    }
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #C81623;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 100%;
+}
+
+s, i, em {
+    font-style: normal;
+    text-decoration: none;
+}
+
+.col-red {
+    color: #C81623 !important;
+}
+ul{
+    word-spacing: -4px;
+}
+
+input::-webkit-search-cancel-button{
+  display: none;
+}
+/* --清除IE下的 search 叉号 */
+input[type=search]::-ms-clear{
+  display: none;
+}
+
+/*公共类*/
+.w {
+    /*版心 提取 */
+    width: 1210px;
+    margin: 0 auto;
+}
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+.al {
+    text-align: left
+}
+
+.ac {
+    text-align: center
+}
+
+.ar {
+    text-align: right
+}
+
+.hide {
+    display: none
+}
+
+.db{
+  display: block;
+ }   
+ /*nav开始*/
+
+/* //     .site-nav {
+//         height: 30px;
+//         background: #f0f0f0;
+//         line-height: 30px;
+//     }
+//     .site-nav .fore {
+//         position: relative;
+//         padding: 0 25px 0 10px;
+//     }
+//     .site-nav i{
+//         width: 15px;
+//         height: 7px;
+//         position: absolute;
+//         top: 12px;
+//         right: 8px;
+//         overflow: hidden;
+//     }
+//     .site-nav s{
+//         position: absolute;
+//         top: -8px;
+//         font: 400 12px/150% "consolas";
+//     }
+// /*var right*/
+/*     .site-nav li{
+//         float: left;
+//         padding: 0 10px;
+//     }
+//     .site-nav li.shu{
+//         width: 1px;
+//         height: 15px;
+//         background: #ddd;
+//         padding: 0px;
+//         margin-top: 9px;
+//     }
+//     .jd-tel {
+//         position: relative;
+//     }
+// .site-nav .jd-tel {
+//     padding-left:25px;
+// }
+//     .site-nav .fore span {
+//         position: absolute;
+//         top: 5px;
+//         left: 7px;
+//         width: 15px;
+//         height: 20px;
+//         background: url("../images/tel.png") no-repeat;
+//     }
+//     /*nav结束*/
+
+
+     /*top-banner开始*/
+     /* .top-banner {
+         background-color: #37C2FB;
+     }
+     .top-banner-conter {
+         position: relative;
+     }
+     .close-banner {
+         position: absolute;
+         top: 5px;
+         right: 5px;
+         width: 19px;
+         height: 19px;
+         background: url("../images/close-banner.png") no-repeat;
+     }
+     .close-banner:hover {
+         background-position: bottom;
+     } */
+     /*top-banner结束*/
+
+
+     /*search开始*/
+     /* .search-logo {
+         width: 362px;
+         height: 60px;
+         padding: 20px 0;
+         float: left;
+     }
+     .search-logo a {
+         float: left;
+         height: 60px;
+         width: 270px;
+         text-indent:-5000px;
+         background: url("../images/logo.png") no-repeat;
+     }
+     .search-input {
+         float: left;
+         width: 538px;
+         height: 36px;
+
+         padding-top: 25px;
+     }
+     .search-input input {
+         padding-left:5px;
+         float: left;
+         color: #cccccc;
+         width: 449px;
+         height: 32px;
+         border: 2px solid #B61D1D;
+         border-right:0;
+     }
+     .search-input button {
+         float: left;
+         height: 36px;
+         width: 82px;
+         background-color: #B61D1D;
+         color: #fff;
+         font: 400 16px/36px "microsoft yahei";
+         cursor: pointer;
+     }
+     .search-car {
+         float: right;
+         width: 139px;
+         height: 34px;
+         text-align: center;
+         position: relative;
+         line-height: 34px;
+         margin: 25px 65px 0 0;
+         background-color: #F9F9F9;
+         border: 1px solid #ddd;
+     }
+     .search-car-gwc {
+         position: absolute;
+         width: 18px;
+         height: 16px;
+         top: 9px;
+         left: 18px;
+         background: url("../images/tel.png") no-repeat 0 -58px;
+     }
+     .search-car-jt {
+         position: absolute;
+         font: 400 13px/34px "simsun";
+         right: 10px;
+     }
+     .search-car-mag{
+         position: absolute;
+         width: 15px;
+         height: 15px;
+         border-radius: 7px 7px 7px 0;
+         top: -8px;
+         right: 30px;
+         background: #c00;
+         color: #fff;
+         line-height: 15px;
+         text-align: center;
+     }
+     .search-moreAlink {
+         float: left;
+         width: 520px;
+         height: 28px;
+     }
+     .search-moreAlink li{
+         float: left;
+         margin-right: 10px;
+     }  */
+    /*search结束*/

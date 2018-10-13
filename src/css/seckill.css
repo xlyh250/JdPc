@@ -1,0 +1,84 @@
+
+/* @font-face {
+    font-family: 'iconfont';
+    src: url(../iconfont.eot');
+    src: url('iconfont.eot?#iefix') format('embedded-opentype'),
+    url('iconfont.woff') format('woff'),
+    url('iconfont.ttf') format('truetype'),
+    url('iconfont.svg#iconfont') format('svg');
+  } */
+  .iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+  }
+ 
+.SecKill{
+    height: 250px;
+    margin:0 auto;
+    width: 1210px;
+    background: #fff;
+    margin-top:20px;
+}
+.SecKill-left{
+    float:left;
+    width: 200px;
+    height: 250px;
+    background:#e83632;
+    text-align: center;   
+    color:#fff;
+}
+.SecKill-left p:first-child{
+    font-size: 35px;
+    margin-top:50px;
+}
+.SecKill-left p:nth-of-type(2){
+    font-size: 20px;
+    margin-top:53px;
+}
+.SecKill-left span{
+    display: inline-block;
+    margin-top: 50px;
+    padding: 0 2px;
+    font-size: 23px;
+}
+.SecKill-right{
+    float:right;  
+   height: 250px;
+}
+/* .SecKill-right div{
+    display: inline-block;
+    width: 198px;
+    height: 250px;
+    background: red;
+} */
+.swiper-container{
+   width: 990px;
+   height: 250px;
+   margin:0 auto;
+   background: #999;
+}
+.swiper-container .swiper-slide{
+    background: #fff;
+    
+}
+.swiper-container .swiper-slide img{
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    margin:20px 92px;
+}
+.swiper-container .swiper-slide p{
+    margin: 0 auto;
+    width: 100px;
+    border-radius: 3px;
+    height: 30px;
+    box-shadow: 5px 5px #999;
+    background: #e83632;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    line-height: 30px;
+}
