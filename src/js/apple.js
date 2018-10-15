@@ -106,11 +106,13 @@ show()
 
 
 function dialog(){
-    $('.love').bind('click',() => {
-        $('.bomb_box').css('display','block')
+    $('.love').bind('click',(ev) => {
+        $('.bomb_box').fadeIn()
+        $(this).stop(ev)
     })
-    $('.close').click(() => {        
-        $('.bomb_box').attr('display', 'none')
+    $('.close').click((ev) => {        
+        $('.bomb_box').fadeOut()
+        $(this).stop(ev)
     })
 }
 dialog()
