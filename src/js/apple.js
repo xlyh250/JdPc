@@ -131,46 +131,47 @@ function tab() {
 
 tab()
 
-function magnifier(){
+ function magnifier(){
         $('.big');
 
         $('.small').move((ev) => {
-            // 获取自身
-            let mask = $('.mask').first();
+
             $('.big').show()
             //ev.clientX当前鼠标可视区位置
 
               //初始化，使方形箭头处于黄色区域中间
-            let maskX = ev.pageX - $('.small').parentElement().offsetLeft - (mask.offsetWidth / 2);
-            let maskY = ev.pageY - $('.small').parentElement().offsetTop - (mask.offsetHeight / 2);
+            let maskX = ev.pageX - $('.small').parent().offLeft() - ($('.mask').offWidth() / 2);
+            let maskY = ev.pageY - $('.small').parent().offTop() - ($('.mask').offHeight() / 2);
+            console.log($('.small').parent().offTop());
             
             // 方形箭头超过大图片X轴的范围则执行对应操作
-            if (maskX >= 0 && maskX <= $('.small').parentElement().offsetWidth - mask.offsetWidth) {
+            if (maskX >= 0 && maskX <= $('.small').parent().offWidth() - $('.mask').offWidth()) {
                 maskX = maskX + "px";
             } else if (maskX < 0) {
                 maskX = 0 + "px";
-            } else if (maskX > $('.small').parentElement().offsetWidth - mask.offsetWidth) {
-                maskX = $('.small').parentElement().offsetWidth - mask.offsetWidth + "px";
+            } else if (maskX > $('.small').parent().offWidth() - $('.mask').offWidth()) {
+                maskX = $('.small').parent().offWidth() - $('.mask').offWidth() + "px";
             };
             
              // 方形箭头超过大图片Y轴的范围则执行对应操作
-            if (maskY >= 0 && maskY <= $('.small').parentElement().offsetWidth - mask.offsetHeight) {
+            if (maskY >= 0 && maskY <= $('.small').parent().offWidth() - $('.mask').offHeight()) {
                 maskY = maskY + "px";
             } else if (maskY < 0) {
                 maskY = 0 + "px";
-            } else if (maskY > $('.small').parentElement().offsetWidth - mask.offsetHeight) {
-                maskY = $('.small').parentElement().offsetWidth - mask.offsetHeight + "px";
+            } else if (maskY > $('.small').parent().offWidth() - $('.mask').offHeight()) {
+                maskY = $('.small').parent().offWidth() - $('.mask').offHeight() + "px";
             }
             //  小图片的距离
-            mask.style.left = maskX;
-            mask.style.top = maskY;
-
-           let Left =  -(800 / 350) * parseInt(mask.style.left)
-           let Top = -(800 / 350) * parseInt(mask.style.top)
+          
+            $('.mask').css('left',`${maskX}`)
+            $('.mask').css('top',`${maskY}`)
+              
+            let Left = -(800 / 350) * parseInt($('.mask').offLeft())
+            let Top = -(800 / 350) * parseInt($('.mask').offTop())
              
             $('#bigImg').css('left',Left+'px')
             $('#bigImg').css('top',Top+'px')
-
+           
         })
 
         $('.small').out(() =>{
@@ -180,6 +181,7 @@ function magnifier(){
 }
 
 magnifier()
+
 
 
 
