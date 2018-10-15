@@ -21,6 +21,6 @@ npm run server
 
 项目展示：
 
-![jdpc](https://github.com/xlyh250/jdPc/blob/master/gif/jdPc.gif)
+![jdpc](https://github.com/xlyh250/JdPc/blob/master/gif/jdpc.gif)
 
 
