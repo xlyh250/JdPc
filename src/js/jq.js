@@ -196,17 +196,17 @@ class Base extends Parent {
         return arr;
     };
     // 封装遍历
-    static each(obj,fn) {
-        if (obj instanceof Array){
-            for (const [index,iterator] of obj.entries()) {
-                var res = fn.bind(iterator,index,iterator)
-                if(res()===true){
+    static each(obj, fn) {
+        if (obj instanceof Array) {
+            for (const [index, iterator] of obj.entries()) {
+                var res = fn.bind(iterator, index, iterator)
+                if (res() === true) {
                     continue;
-                }else if(res()===false){
+                } else if (res() === false) {
                     return false
                 }
             }
-        }else if(typeof obj === 'object'){
+        } else if (typeof obj === 'object') {
             for (const [index, iterator] of obj.entries()) {
                 var res = fn.bind(iterator, index, iterator)
                 if (res() === true) {
@@ -220,21 +220,21 @@ class Base extends Parent {
         return obj
     };
     // 获取外部样式表的样式
-    static getStyle(attr,val) {
+    static getStyle(attr, val) {
 
-         var res = []
-         
-         if(typeof attr=== 'string'){
-             return window.getComputedStyle(val,null)[attr]
-         }
+        var res = []
 
-        Base.each(val,(i,value) => {
-           
-            if(window.getComputedStyle){
-                
-              res.push(window.getComputedStyle(value, null)[attr])
-            }else{
-              res.push(value.currentStyle[attr])
+        if (typeof attr === 'string') {
+            return window.getComputedStyle(val, null)[attr]
+        }
+
+        Base.each(val, (i, value) => {
+
+            if (window.getComputedStyle) {
+
+                res.push(window.getComputedStyle(value, null)[attr])
+            } else {
+                res.push(value.currentStyle[attr])
             }
         })
         return res.join('')
@@ -277,12 +277,12 @@ class Base extends Parent {
 
         if (arguments.length === 1) {
 
-            return Base.getStyle(attr,this.elements)
+            return Base.getStyle(attr, this.elements)
         }
-        Base.each(this.elements,(i,val) => {
+        Base.each(this.elements, (i, val) => {
             val.style[attr] = value;
         })
-    
+
         return this;
     };
 
@@ -290,11 +290,11 @@ class Base extends Parent {
     addClass(classs) {
         // 变量需要用new RagExp
         // let reg = new RegExp("(\\s|^)"+classs+"(\\s|$)","g")
-        Base.each(this.elements,(i, val) => {
+        Base.each(this.elements, (i, val) => {
             //  hasclass第二个参数名字要与addclass参数名相同
             if (!Base.hasClass(val, classs)) {
 
-                val.className === val.className ? val.className += ' ' + classs: val.className = '' + classs;
+                val.className === val.className ? val.className += ' ' + classs : val.className = '' + classs;
             }
         })
         return this
@@ -304,7 +304,7 @@ class Base extends Parent {
     removeClass(classname) {
         let reg = new RegExp("(\\s|^)" + classname + "(\\s|$)", "g")
         // macth类似indexOf
-        Base.each(this.elements,(i, val) => {
+        Base.each(this.elements, (i, val) => {
             if (Base.hasClass(val, classname)) {
 
                 val.className = val.className.replace(reg, '')
@@ -318,7 +318,7 @@ class Base extends Parent {
         if (arguments.length === 0) {
             return this.elements[0].innerHTML
         } else {
-            Base.each(this.elements,(i, val) => {
+            Base.each(this.elements, (i, val) => {
 
                 val.innerHTML = html
             })
@@ -333,7 +333,7 @@ class Base extends Parent {
             return this.elements[0].innerText
         }
         else {
-            Base.each(this.elements,(i, val) => {
+            Base.each(this.elements, (i, val) => {
                 val.innerText = text
             })
         }
@@ -350,11 +350,11 @@ class Base extends Parent {
     // 获取子元素节点
     children() {
         var res = [];
-           
-        Base.each(this.elements,(i, val) => {
+
+        Base.each(this.elements, (i, val) => {
             // 获取val.children的父元素
             res.push(...val.children)
-            
+
         })
 
         return $(res)
@@ -375,11 +375,11 @@ class Base extends Parent {
     eq(num) {
         // 找到指定位置的元素
         let element = this.elements[num];
-        
+
         this.elements = [];
         // 再把指定位置的元素赋给数组
         this.elements[0] = element;
-        
+
         // 第二种
         // this.elements[num] = element;
         // Base.removeEmptyArrayEle(this.elements)
@@ -398,9 +398,9 @@ class Base extends Parent {
     // 返回父节点连缀调用版本
     parent() {
         for (let i = 0; i < this.elements.length; i++) {
-            return this.elements[i].parentNode;
+           var res = this.elements[i].parentNode;
         }
-        return this
+        return $(res)
     };
     // 返回子节点 非连缀 
     childrenElement() {
@@ -414,7 +414,7 @@ class Base extends Parent {
             return this.elements[0].getAttribute(attr);
         }
         else if (arguments.length === 2) {
-            Base.each(this.elements,(i, val) => {
+            Base.each(this.elements, (i, val) => {
                 val.setAttribute(attr, value);
             })
         }
@@ -423,7 +423,7 @@ class Base extends Parent {
     // 获取其他兄弟元素
     siblings() {
         var res = []
-        Base.each(this.elements,(i, val) => {
+        Base.each(this.elements, (i, val) => {
 
             let prev = val
             //先往上查询兄弟节点
@@ -452,7 +452,7 @@ class Base extends Parent {
         if (arguments.length === 0) {
 
             // 返回所有找到的
-            Base.each(this.elements,(i, val) => {
+            Base.each(this.elements, (i, val) => {
                 var temp = Base.nextsibling(val);
                 if (temp !== null) {
                     res.push(temp);
@@ -460,7 +460,7 @@ class Base extends Parent {
             });
         } else {
             // 返回指定找到的
-            Base.each(this.elements,(i, val) => {
+            Base.each(this.elements, (i, val) => {
                 var temp = Base.nextsibling(val)
                 $(sele).each(function (k, v) {
                     if (v === null || v !== temp) return;
@@ -477,14 +477,14 @@ class Base extends Parent {
         var res = [];
         if (arguments.length === 0) {
             // 返回所有找到的
-            Base.each(this.elements,(i, val) => {
+            Base.each(this.elements, (i, val) => {
                 var temp = Base.previoussibling(val);
                 if (temp === null) return;
                 res.push(temp);
             });
         } else {
             // 返回指定找到的
-            Base.each(this.elements,(i, val) => {
+            Base.each(this.elements, (i, val) => {
                 var temp = Base.previoussibling(val);
                 $(sele).each((index, v) => {
                     if (v === null || temp !== v) return;
@@ -498,7 +498,7 @@ class Base extends Parent {
 
     // 点击事件
     click(fn) {
-        Base.each(this.elements,(i, val) => {
+        Base.each(this.elements, (i, val) => {
             val.onclick = fn
         })
         return this;
@@ -506,23 +506,23 @@ class Base extends Parent {
     // 移入移出事件
     hover(over, out) {
 
-        Base.each(this.elements,(i, val) => {
+        Base.each(this.elements, (i, val) => {
             val.onmouseover = over;
             val.onmouseout = out;
         })
         return this;
     };
-   
+
     // 绑定事件
     bind(event, fn) {
-        Base.each(this.elements,(i, val) => {
+        Base.each(this.elements, (i, val) => {
             Base.addEvent(val, event, fn);
         })
         return this;
     };
     //设置物体位置 ，记得要先设置 position: absolute;
     center(width, height) {
-        Base.each(this.elements,(i, val) => {
+        Base.each(this.elements, (i, val) => {
             val.style.top = (Base.getClient().height - height) /
                 2 - 20 + 'px';
             val.style.left = (Base.getClient().width - width) /
@@ -532,28 +532,28 @@ class Base extends Parent {
     };
     // 进入事件   
     move(fn) {
-        Base.each(this.elements,(i, val) => {
+        Base.each(this.elements, (i, val) => {
             val.onmousemove = fn
         })
         return this
     };
     // 离开事件    
     out(fn) {
-        Base.each(this.elements,(i, val) => {
+        Base.each(this.elements, (i, val) => {
             val.onmouseout = fn
         })
         return this
     };
     // 进入事件，与move不同的是，这个事件发生在真正执行事件的元素   
     enter(fn) {
-        Base.each(this.elements,(i, val) => {
+        Base.each(this.elements, (i, val) => {
             val.onmouseenter = fn
         })
         return this
     };
     // 离开事件，与out不同的是，这个事件发生在真正执行事件的元素   
     leave(fn) {
-        Base.each(this.elements,(i, val) => {
+        Base.each(this.elements, (i, val) => {
             val.onmouseleave = fn
         })
         return this
@@ -576,35 +576,35 @@ class Base extends Parent {
     fadeIn() {
         // 设置opacity属性
         this.css('opacity', '0')
-        
+
         Base.each(this.elements, (i, val) => {
-          
-            let current = parseInt(Base.getStyle('opacity', val)) 
+
+            let current = parseInt(Base.getStyle('opacity', val))
             let finall = 100;
             var timer = setInterval(() => {
                 let speed = (finall - current) / 100
-               
-                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
-                
-                current = current + speed
-                val.style.opacity = (current /100)
 
-                if (current ===100){
-                  val.style.display = 'block'
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+
+                current = current + speed
+                val.style.opacity = (current / 100)
+
+                if (current === 100) {
+                    val.style.display = 'block'
                     clearInterval(timer)
                 }
             })
-          }, 20)
+        }, 20)
         return this;
     };
     // 动画淡出
-    fadeOut(ev) {
+    fadeOut() {
         // 设置opacity属性
         this.css('opacity', '1')
 
         Base.each(this.elements, (i, val) => {
 
-            let current = parseInt(Base.getStyle('opacity', val)) *100
+            let current = parseInt(Base.getStyle('opacity', val)) * 100
             let finall = 0;
             var timer = setInterval(() => {
                 let speed = -(finall - current) / 100
@@ -613,7 +613,7 @@ class Base extends Parent {
 
                 current = current - speed
                 val.style.opacity = (current / 100)
-                
+
                 if (current === 0) {
                     clearInterval(timer)
                     val.style.display = 'none'
@@ -621,12 +621,52 @@ class Base extends Parent {
             })
         }, 20)
         return this;
-    }
+    };
+    // 获取宽度(包括边框)
+    offWidth(){
+        
+        return this.elements[0].offsetWidth
+    };
+    // 获取高度(包括边框)
+    offHeight() {
+
+        return this.elements[0].offsetHeight
+
+    };
+    // 获取元素到父元素左边的距离
+    offLeft(Left) {
+ 
+        if (!arguments.length) {
+            
+            return this.elements[0].offsetLeft
+        }
+        Base.each(this.elements, (i, val) => {
+            val.style.left = Left + 'px'
+        })
+        return this
+
+    };
+    // 获取元素到父元素顶部的距离
+    offTop(Top) {
+        if (!arguments.length) {
+            
+            return this.elements[0].offsetTop
+        }
+        Base.each(this.elements, (i, val) => {
+     
+            val.style.top = Top + 'px'
+
+        })
+        
+        return this
+
+    };
+
     // 阻止冒泡/捕获
-    stop(ev){
+    stop(ev) {
         ev.stopPropagation()
     };
-    
+
 }
 
 
@@ -637,7 +677,6 @@ export {
     $,
     Base
 }
-
 
 
 
