@@ -427,7 +427,7 @@
     left: 0;
     top: 0;
     z-index: 99;
-    display: none;
+    opacity: 0;
 }
 .bomb_box .dialog{
     width: 400px;

@@ -81,11 +81,14 @@ window.onload=function(){
      // 选项卡切换
       function tab() {
         // 箭头函数内没有this
+        console.log($('.bottom ul').children());
+
         $('.bottom ul').children().enter(function () {
-          $('.bottom ul').children().attr('class', '');
-          $('#wrap div').css('display', 'none')
-          $(this).attr('class', 'on');
-          $('#wrap div').eq($(this).index()).css('display', 'block');
+            $('.bottom ul').children().attr('class', '');
+            
+            $('#wrap div').css('display', 'none')
+            $(this).attr('class', 'on');
+            $('#wrap div').eq($(this).index()).css('display', 'block');
         })
       }
 
@@ -316,8 +319,9 @@ window.onload=function(){
   }
 
 
-console.log($('.bottom ul').children());
-  
+$('.bottom ul').children().click(function(){
+     $('#http').fadeIn()
+});
 
 
 
